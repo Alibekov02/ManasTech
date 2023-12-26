@@ -1,0 +1,32 @@
+import cv2
+import numpy as np
+image=cv2.imread("/home/nurtilek/Downloads/100_0140/DJI_0001.JPG")
+font = cv2.FONT_HERSHEY_SIMPLEX  # Выбираем шрифт
+text = "Alibekov Nurtilek"  # Ваш текст
+ # Координаты начальной позиции текста
+fontScale = 3  # Масштаб шрифта
+fontColor = (1, 1, 0)  # Цвет шрифта в формате BGR
+lineType = 2  # Тип линии для текста
+if image is None:
+	print("Error image not found")
+
+
+else:
+	cv2.namedWindow('My Image', cv2.WINDOW_NORMAL)
+	cv2.resizeWindow('My Image', 1800, 1000) 
+	height,width,c=image.shape
+	if width > 0 and height > 0:
+        # Рисуем вертикальные и горизонтальные линии для разделения на 4 части
+		cv2.line(image, (width // 2, 0), (width // 2, height), (0, 0, 255), 3)
+		cv2.line(image, (0, height // 2), (width, height // 2), (0, 0, 255), 3)
+		cv2.line(image,(width//4,height//4),(width//4*3,height//4), (0,0,255),3)
+		cv2.line(image,(width//4*3,height//4),(width//4*3,height//4*3), (0,0,255),3)
+		cv2.line(image,(width//4,height//4*3),(width//4*3,height//4*3), (0,0,255),3)
+		cv2.line(image,(width//4,height//4),(width//4,height//4*3), (0,0,255),3)
+		position = (width//4, height//4*3+100) 
+		cv2.putText(image, text, position, font, fontScale, fontColor, lineType)
+	cv2.imshow("My Image",image)
+	
+	cv2.waitKey(0)
+	cv2.destroyAllWindows()
+

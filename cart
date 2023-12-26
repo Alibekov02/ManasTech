@@ -1,0 +1,32 @@
+myList=[]
+carts=["2","3","4","5","6","7","8","9","10","J","Q","K","A"]
+mass=["H","S","C","D"]
+for i in range(13):
+	for j in range(4):
+		myList.append(carts[i]+mass[j])
+print(myList)
+ranking={}
+for i in range(52):
+	for j in range(i+1,52):
+		cart1=(myList[i])[:-1];
+		cart2=(myList[j])[:-1];
+		
+		if(cart1[0]==cart2[0]):
+		        rank = 12-carts.index(cart1)
+		        ranking [myList[i]+" "+myList[j]] = rank
+		        ranking [myList[j]+" "+myList[i]] = rank
+		else :  
+			rank = (13-carts.index(cart2))*12+(carts.index(cart2)-carts.index(cart1))
+			ranking [myList[j]+" "+myList[i]] = rank
+			ranking [myList[i]+" "+myList[j]] = rank
+			
+
+while True:
+	user_input = input("Введите карту: ")
+	if user_input == -1:
+		break
+	if user_input in ranking:
+	    print(ranking[user_input])
+	else:
+	    print("Такой карта не существует")
+        

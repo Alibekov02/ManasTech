@@ -1,0 +1,13 @@
+import cv2
+
+cam = cv2.VideoCapture("rtmp://192.168.93.219:1935/live/1")
+while True:
+    check, frame = cam.read()
+    #if  not check : continue
+    cv2.imshow('video', frame)
+    key = cv2.waitKey(1)
+    if key == 27:
+        break
+
+cam.release()
+cv2.destroyAllWindows()
