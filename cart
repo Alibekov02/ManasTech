@@ -30,3 +30,4 @@ while True:
 	else:
 	    print("Такой карта не существует")
         
+print('nurtiblack')
